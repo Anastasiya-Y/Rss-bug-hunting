@@ -70,7 +70,7 @@ function removeItem(id) {
 }
 
 function applyPromo() {
-  if ((promoInput.value === "SALE10")) {
+  if ((promoInput.value.trim() === "SALE10")) {
     discount = 0.1;
   } else {
     discount = 0;
@@ -111,7 +111,6 @@ function renderCart() {
 
   badgeEl.textContent = itemsInCartQty;
   totalEl.textContent = total;
-  // emptyMsg.hidden = true;
   emptyMsg.hidden = !!cart.length;
 }
 
