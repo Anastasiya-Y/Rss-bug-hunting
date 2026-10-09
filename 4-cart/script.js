@@ -84,6 +84,7 @@ function clearCart() {
 function renderCart() {
   cartItemsEl.innerHTML = "";
   let total = 0;
+  let itemsInCartQty = 0;
   cart.forEach((item) => {
     const lineTotal = item.price * item.qty;
     const li = document.createElement("li");
@@ -99,13 +100,15 @@ function renderCart() {
     li.querySelector(".remove").addEventListener("click", () => removeItem(item.id));
     cartItemsEl.appendChild(li);
     total += item.price * item.qty;
+    itemsInCartQty += item.qty;
   });
 
   if (discount) {
     total = total - total * discount;
   }
 
-  badgeEl.textContent = cart.length;
+  // badgeEl.textContent = cart.length;
+  badgeEl.textContent = itemsInCartQty;
   totalEl.textContent = total;
   emptyMsg.hidden = true;
 }
